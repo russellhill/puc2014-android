@@ -1,0 +1,140 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newVersion"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:gravity="fill_vertical"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/topArea"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:background="#F2CB35" >
+        
+        <TextView
+            android:id="@+id/versionLabel1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="#PUC2014"
+            android:textSize="30dp" >
+        </TextView>
+    
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topArea"
+        android:orientation="vertical"
+        android:background="@drawable/gradient" >
+
+        <TextView
+            android:id="@+id/fullDateLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Thu 6 Feb 2014"
+            android:layout_marginTop="5dp"
+			android:fontFamily="sans-serif-thin"
+			android:textStyle="normal"
+			android:textColor="#FFFFFF"
+            android:textSize="28dp" >
+        </TextView>
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:layout_marginTop="10dp"
+	        android:orientation="horizontal" >
+
+	        <TextView
+	            android:id="@+id/totalLabel"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:padding="10dp"
+	            android:layout_margin="10dp"
+	            android:text="Total to date"
+	            android:layout_marginTop="5dp"
+				android:fontFamily="sans-serif-thin"
+				android:textStyle="normal"
+				android:textColor="#FFFFFF"
+	            android:textSize="28dp" >
+	        </TextView>
+	        
+	       	<TextView
+	            android:id="@+id/totalNumberLabel"
+	            android:layout_width="100dp"
+	            android:layout_height="100dp"
+	            android:padding="10dp"
+	            android:layout_margin="10dp"
+	            android:gravity="center"
+	            android:text="66900"
+	            android:background="@drawable/circle_border_thin"
+	            android:layout_marginTop="5dp"
+				android:fontFamily="sans-serif-thin"
+				android:textStyle="normal"
+				android:textColor="#FFFFFF"
+	            android:textSize="28dp" >
+	        </TextView>
+		</LinearLayout>
+        
+		<TextView
+			android:id="@+id/totalLabel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Todays challenge"
+			android:layout_marginTop="15dp"
+			android:layout_gravity="center"
+			android:fontFamily="sans-serif"
+			android:textStyle="normal"
+			android:textColor="#FFFFFF"
+			android:textSize="30dp" >
+		</TextView>
+	    
+		<RelativeLayout
+		    android:layout_width="220dp"
+		    android:layout_height="220dp"
+		    android:layout_gravity="center" >
+		
+		    <TextView
+	            android:id="@+id/dayChallengeTick"
+	            android:layout_width="220dp"
+	            android:layout_height="220dp"
+	            android:gravity="center"
+	            android:layout_margin="10dp"
+	            android:layout_gravity="center"
+	            android:text="A"
+	            android:background="@drawable/circle"
+				android:textStyle="normal"
+				android:textColor="#88FFFFFF"
+	            android:textSize="140dp"
+	            android:alpha="1.0"
+	            android:visibility="invisible" >
+	        </TextView>		
+			
+		    <TextView
+	            android:id="@+id/dayNumberLabel"
+	            android:layout_width="220dp"
+	            android:layout_height="220dp"
+	            android:padding="20dp"
+	            android:layout_margin="10dp"
+	            android:gravity="center"
+	            android:layout_gravity="center"
+	            android:text="337"
+	            android:background="@drawable/circle_border"
+	            android:layout_marginTop="5dp"
+				android:fontFamily="sans-serif-thin"
+				android:textStyle="normal"
+				android:textColor="#FFFFFF"
+				android:clickable="true"
+	            android:textSize="100dp" >
+	        </TextView>
+        </RelativeLayout>
+        
+	</LinearLayout>
+
+</LinearLayout>

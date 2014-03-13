@@ -133,6 +133,17 @@
 				android:clickable="true"
 	            android:textSize="100dp" >
 	        </TextView>
+
+		    <ProgressBar
+		        android:id="@+id/progressSpinner"
+		        style="?android:attr/progressBarStyleLarge"
+		        android:visibility="gone"
+	            android:layout_width="220dp"
+	            android:layout_height="220dp"
+		        android:indeterminateDrawable="@drawable/progress"
+		        android:layout_centerHorizontal="true"
+		        android:layout_centerVertical="true" />
+
         </RelativeLayout>
         
 	</LinearLayout>

@@ -24,6 +24,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 @SuppressLint("NewApi")
@@ -32,6 +33,7 @@ public class HomeActivity extends Activity {
 	private TextView dayNumber;
 	private TextView totalNumber;
 	private TextView challengeTick;
+	private ProgressBar progressSpinner;
 	
 	String tweetMessage;
 	final Handler twitHandler = new Handler();
@@ -64,6 +66,7 @@ public class HomeActivity extends Activity {
 		dayNumber = (TextView)findViewById(R.id.dayNumberLabel);	
 		totalNumber = (TextView)findViewById(R.id.totalNumberLabel);
 		challengeTick = (TextView)findViewById(R.id.dayChallengeTick);
+		progressSpinner = (ProgressBar)findViewById(R.id.progressSpinner);
 		
 		// use font-awesome "tick"
 		Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
@@ -84,10 +87,10 @@ public class HomeActivity extends Activity {
 		    	// reset the UI values
 		    	setUIValues();
 		    	
-		    	Log.i("tweet", "#PUC2014 I just completed my challenge of " + dayNumber.getText() + " push-ups for the day! Total for 2014 so far is " + totalNumber.getText() + "!");
-		    	
+		    	Log.i("tweet", "#PUC2014 I just completed my daily challenge of " + dayNumber.getText() + " push-ups! Year total: " + totalNumber.getText());
+
 		    	// tweet a message
-				shareTwitter("#PUC2014 I just completed my challenge of " + dayNumber + " push-ups for the day! Total for 2014 is " + totalNumber + "!");		    	
+				shareTwitter("#PUC2014 I just completed my daily challenge of " + dayNumber.getText() + " push-ups! Year total: " + totalNumber.getText());		    	
 		    }
 		});
 	}
@@ -127,6 +130,11 @@ public class HomeActivity extends Activity {
 			challengeTick.setVisibility(View.INVISIBLE);
 
 			Log.i("info", "IT'S A NEW DAY");
+		} else {
+			// it's a new day so hide the check!
+			challengeTick.setVisibility(View.VISIBLE);
+
+			Log.i("info", "IT'S THE SAME DAY");			
 		}
 	}
 	
@@ -144,6 +152,14 @@ public class HomeActivity extends Activity {
 		setUIValues();
 		
 		Log.i("info", ">>>>SET DATES");
+	}
+	
+	private void showProgress() {
+		progressSpinner.setVisibility(View.VISIBLE);
+	}
+	
+	private void hideProgress() {
+		progressSpinner.setVisibility(View.GONE);
 	}
 	
 	private boolean checkSameDay() {
@@ -170,15 +186,23 @@ public class HomeActivity extends Activity {
 	public final void shareTwitter(String yourTweet) {
 		tweetMessage = yourTweet;
 
+		// show the spinner
+		showProgress();
+		
 		if (TwitterUtils.isAuthenticated( prefs )) {
 			// already authenticated before
+			Log.i("info", "Already authenticated with Twitter");
 			twitHandler.post(sendTweet);
 		} else {
 			// needs authenticating, so take care of it
+			Log.i("info", "Authentication with Twitter required");
 			Intent i = new Intent(this, OAuthVerify.class);
 			i.putExtra("tweet_msg", tweetMessage);
 			startActivity(i);
 		}
+		
+		// hide the spinner
+		hideProgress();
 	}
 
 	final Runnable sendTweet = new Runnable() {
